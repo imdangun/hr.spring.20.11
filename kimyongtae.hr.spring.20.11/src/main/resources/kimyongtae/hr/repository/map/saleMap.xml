@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='kimyongtae.hr.repository.map.SaleMap'>
+	<select id='selectSales' resultMap='saleMap'>
+		select emp_id, sales, reg_date
+		from sales
+		order by emp_id desc
+	</select>
+	
+	<select id='selectSale' resultMap='saleMap'>
+		select emp_id, sales, reg_date
+		from sales
+		where emp_id = #{empId}
+	</select>	
+	
+	<resultMap id='saleMap' type='sale'>
+		<id     property='empId'    column='emp_id'/>
+		<result property='sales'    column='sales'/>
+		<result property='regDate'  column='reg_date'/>
+	</resultMap>
+	
+	<select id='selectEmployeeIdsNoSale' resultType='int'>
+		select emp_id
+		from employees
+		where not exists (
+    		select *
+   			from sales
+    		where sales.emp_id = employees.emp_id)
+		order by emp_id desc    		
+	</select>
+	
+	<insert id='insertSale'>
+		insert into sales 
+		values (#{empId}, #{sales}, current_date)
+	</insert>
+	
+	<update id='updateSale'>
+		update sales
+		set sales = #{sales}, reg_date = current_date
+		where emp_id = #{empId}
+	</update>
+	
+	<delete id='deleteSale'>
+		delete sales
+		where emp_id = #{empId}
+	</delete>
+</mapper>	
