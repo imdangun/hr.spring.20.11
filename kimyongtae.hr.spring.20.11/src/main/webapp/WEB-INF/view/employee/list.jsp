@@ -46,7 +46,7 @@ function listEmployees() {
 			let empList = [];
 			
 			$.each(emps, (idx, emp) => {
-				empList.unshift(
+				empList.push(
 					`<tr>
 						<th>
 							<div class='form-check form-check-inline'>										
