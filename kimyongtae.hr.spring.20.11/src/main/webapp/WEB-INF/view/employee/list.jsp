@@ -59,7 +59,7 @@ function listEmployees() {
 						</th>
 						<td>\${emp.empName}</td>
 						<td class='text-center'>
-							\${emp.salary}
+							\${emp.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
 						</td>
 						<td>\${emp.hireDate}</td>
 					</tr>`
@@ -152,6 +152,14 @@ function init() {
 			$('#hireDate').val(emp.eq(2).text());
 		}
 	}, '#empId');
+	
+	// 연봉 산정
+	$('#salaryBtn').click(() => {
+		$.ajax('employee/salary').done(result => {
+			if(result) alert('연봉을 산정했습니다.');
+			else alert('연봉을 산정하지 못했습니다. 매출 추가하세요.', false);
+		});
+	});
 }
 
 $(init);

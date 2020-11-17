@@ -42,4 +42,9 @@ public class EmployeeController {
 	public boolean delEmployee(@PathVariable int empId) {
 		return empService.delEmployee(empId);
 	}
+	
+	@GetMapping("/salary")
+	public boolean calcSalaries() {		
+		return empService.calcSalaries();
+	}
 }

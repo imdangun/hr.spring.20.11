@@ -31,9 +31,14 @@ function init() {
 }
 
 function nextSale() {
-	let empId = empIdList.pop();
-	$('#empId').val(empId);
-	$('#empIdLabel').text(empId);
+	if(empIdList.length) {
+		let empId = empIdList.pop();
+		$('#empId').val(empId);
+		$('#empIdLabel').text(empId);
+	} else {
+		$('#msg').removeClass('alert-success').addClass('alert-danger');
+		$('#msg').text('매출을 추가할 사원이 없습니다.');
+	}
 }
 
 $(() => {
