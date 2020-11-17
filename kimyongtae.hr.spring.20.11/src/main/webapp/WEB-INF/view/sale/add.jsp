@@ -20,8 +20,13 @@ function init() {
 					$('#msg').removeClass('alert-success').addClass('alert-danger');
 					$('#msg').text('매출을 추가 못했습니다.');
 				}
-				
-				nextSale();
+			
+				if(empIdList.length) nextSale();
+				else {
+					$('#empIdLabel').text('');
+					$('#msg').removeClass('alert-success').addClass('alert-danger');
+					$('#msg').text('매출을 추가할 사원이 없습니다.');
+				}
 			});
 		} else {
 			$('#msg').removeClass('alert-success').addClass('alert-danger');
@@ -31,19 +36,21 @@ function init() {
 }
 
 function nextSale() {
-	if(empIdList.length) {
-		let empId = empIdList.pop();
-		$('#empId').val(empId);
-		$('#empIdLabel').text(empId);
-	} else {
-		$('#msg').removeClass('alert-success').addClass('alert-danger');
-		$('#msg').text('매출을 추가할 사원이 없습니다.');
-	}
+	console.log(empIdList);
+	let empId = empIdList.pop();
+	$('#empId').val(empId);
+	$('#empIdLabel').text(empId);
 }
 
 $(() => {
 	init();
-	nextSale();	
+	
+	if(empIdList.length) {
+		nextSale();
+	} else {
+		$('#msg').removeClass('alert-success').addClass('alert-danger');
+		$('#msg').text('매출을 추가할 사원이 없습니다.');
+	}
 });
 </script>
 <div class='container'>
