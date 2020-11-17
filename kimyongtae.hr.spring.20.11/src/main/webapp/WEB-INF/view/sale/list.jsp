@@ -58,7 +58,7 @@ function listSales() {
 			});
 			
 			$('#saleList').append(saleList.join(''));
-		} else $('#saleList').append('<tr><td colspan=4>매출이 없습니다.</td></tr>');	
+		} else $('#saleList').append("<tr><td colspan='4' class='text-center'>매출이 없습니다.</td></tr>");	
 	});
 }
 
@@ -67,21 +67,7 @@ function init() {
 	listSales();
 	
 	closeAlert();	
-	$('#closeBtn').click(() => closeAlert());
-	
-	// 매출 추가
-	$('#addSaleBtn').click(() => {
-		if(isSale()){			
-			$.ajax({
-				url: 'sale/add',
-				data: $('#sales').val(),
-				method: 'post'
-			}).done(result => {
-				if(result) alert('매출을 추가했습니다.');
-				else alert('매출을 추가 하지 못했습니다.');
-			});
-		}else alert('매출액을 입력하세요.', false);
-	});	
+	$('#closeBtn').click(() => closeAlert());	
 	
 	// 매출 수정
 	$('#fixSaleBtn').click(() => {
@@ -92,9 +78,8 @@ function init() {
 				let sale = {	
 					empId: empId,
 					sales: $('#sales').val()
-				};				
-		
-				console.log(sale);
+				};	
+				
 				$.ajax({
 					url: 'sale/fix',
 					data: JSON.stringify(sale),
@@ -105,7 +90,7 @@ function init() {
 					else alert('매출을 수정 하지 못했습니다.');
 				});
 			}else alert('매출액을 입력하세요.', false);
-		}else alert('매출을 수정할 사원을 선택하세요.', false);
+		}else alert('수정할 매출을 선택하세요.', false);
 	});
 
 	// 매출 삭제
@@ -153,7 +138,7 @@ $(init);
 				<div class='ml-4'>	
 					<button type='button' class='btn btn-sm btn-outline-info' id='fixSaleBtn'>수정</button>
 					<button type='button' class='btn btn-sm btn-outline-success' id='delSaleBtn'>삭제</button>
-					<button type='button' class='btn btn-sm btn-outline-secondary ml-3' id='addSaleBtn'>추가</button>					
+					<a href='sale/add' class='btn btn-sm btn-outline-secondary ml-3' id='addSaleBtn'>추가</a>					
 				</div>					
 			</form>
 		</div>	
