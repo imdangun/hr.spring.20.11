@@ -6,16 +6,11 @@ function alert(msg, result = true) {
 		for(input of inputs)
 			input.val('');
 		
-		$('#msg').removeClass('alert-danger').addClass('alert-success');
-	} else $('#msg').removeClass('alert-success').addClass('alert-danger');	
+		$('#alert').removeClass('alert-danger').addClass('alert-success');
+	} else $('#alert').removeClass('alert-success').addClass('alert-danger');	
 	
-	$('#msg').text(msg);
-	$('#alert').show();	
-}
-
-// alert 을 닫는다.
-function closeAlert() {
-	$('#alert').hide();
+	$('#alert').text(msg);
+	$('#alert').addClass('show');	
 }
 
 // 입력값이 있는 지 조사한다.
@@ -34,11 +29,12 @@ function isChecked (){
 	return check;
 }
 
-// 목록 조회 화면을 준비한다.
-function prepareList() {
-	list();
-	
-	closeAlert();
-	
+// alert 창을 초기화한다.
+function initAlert() {
 	$('#closeBtn').click(() => closeAlert());
+}
+
+//alert 을 닫는다.
+function closeAlert() {
+	$('#alert').hide();
 }

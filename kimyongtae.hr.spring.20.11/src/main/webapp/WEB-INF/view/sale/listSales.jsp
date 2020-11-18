@@ -35,7 +35,7 @@ function listSales() {
 
 // handler 들을 등록한다.
 function init() {
-	prepareList();
+	list();
 	
 	// 매출 수정
 	$('#fixSaleBtn').click(() => {

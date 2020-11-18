@@ -36,7 +36,7 @@ function listEmployees() {
 
 // handler 들을 등록한다.
 function init() {
-	prepareList();
+	list();
 	
 	// 사원 추가
 	$('#addEmpBtn').click(() => {

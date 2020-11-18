@@ -3,6 +3,9 @@
 	application.setAttribute("contextPath", request.getContextPath());
 	request.setAttribute("myUri", request.getRequestURI());
 %>
+<script>
+$(initAlert);
+</script>
 <div class='row'>
 	<div class='col'>
 		<div class='card bg-light p-1 text-center mb-4'>
@@ -23,11 +26,14 @@
 	</div>
 	
 	<div class='col'>
-		<div id='alert' class='alert alert-dismissible fade show p-0 pl-4 mb-1'>				
-			<p class='m-0' id='msg'>메세지</p>
-			<button type='button' class='p-0 close' tabindex='-1' id='closeBtn'>
+		<div id='alert' class='alert alert-success alert-dismissible fade p-0 pl-4 mb-1'>
+			<span id='msg'></span>
+			<button type='button' id='closeBtn' class='close p-0'>
 				<span>&times;</span>
-			</button>		
+			</button>	
+			<button type='button' class='close' data-dismiss='alert'>
+				<span>&times;</span>
+			</button>	
 		</div>		
 	</div>		
 </div>
