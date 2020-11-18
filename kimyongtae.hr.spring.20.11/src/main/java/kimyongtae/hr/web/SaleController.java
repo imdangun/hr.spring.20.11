@@ -2,8 +2,6 @@ package kimyongtae.hr.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,17 +27,17 @@ public class SaleController {
 		return saleService.getSales();
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/addSale")
 	public ModelAndView addSaleIn(ModelAndView mv) {
 		empIdList = saleService.getEmployeeIdsNoSale();
 		
 		mv.addObject("empIdList", empIdList);
-		mv.setViewName("sale/add");
+		mv.setViewName("sale/addSale");
 		
 		return mv;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/addSale")
 	public boolean addSale(int empId, int sales) {
 		boolean result = false;
 		

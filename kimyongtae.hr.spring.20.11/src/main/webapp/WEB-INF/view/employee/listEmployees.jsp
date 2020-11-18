@@ -1,52 +1,8 @@
 <%@ page language='java' contentType='text/html; charset=utf-8' pageEncoding='utf-8' %>
 <%@ include file='../include/lib.jsp' %>
-<script src='../include/lib.js'></script>
-
 <script>
 list = listEmployees
 inputs = [$('#empName'), $('#hireDate')];
-
-// 메세지를 출력한다.
-/*
-function alert(msg, result = true) {
-	if(result) {
-		listEmployees();		
-		
-		$('#empName').val('');
-		$('#hireDate').val('');
-		
-		$('#msg').removeClass('alert-danger').addClass('alert-success');
-	} else $('#msg').removeClass('alert-success').addClass('alert-danger');	
-	
-	$('#msg').text(msg);
-	$('#alert').show();
-}
-*/
-
-function closeAlert() {
-	$('#alert').hide();
-}
-
-// 사용자명을 입력했는지 조사한다.
-function isEmpName() {
-	let check = false;
-	if($('#empName').val()) check = true;
-	return check;
-}
-
-// 입사일을 입력했는지 조사한다.
-function isHireDate() {
-	let check = false;
-	if($('#hireDate').val()) check = true;
-	return check;
-}
-
-// 사원을 선택했는지 조사한다.
-function isEmpId (){
-	let check = false;
-	if($(':radio:checked').length) check = true;
-	return check;
-}
 
 function listEmployees() {
 	$('#empList').empty();
@@ -80,14 +36,11 @@ function listEmployees() {
 
 // handler 들을 등록한다.
 function init() {
-	listEmployees();
-	
-	closeAlert();	
-	$('#closeBtn').click(() => closeAlert());
+	prepareList();
 	
 	// 사원 추가
 	$('#addEmpBtn').click(() => {
-		if(isEmpName() && isHireDate()){			
+		if(isVal($('#empName')) && isVal($('#hireDate'))) {			
 			let emp = {				
 				empName: $('#empName').val(),				
 				hireDate: $('#hireDate').val()
@@ -106,8 +59,8 @@ function init() {
 	
 	// 사원 수정
 	$('#fixEmpBtn').click(() => {
-		if(isEmpId()){
-			if(isEmpName() && isHireDate()) {
+		if(isChecked()){
+			if(isVal($('#empName')) && isVal($('#hireDate'))) {
 				let empId = $(':checked').parent().text().trim();
 				
 				let emp = {	
@@ -131,7 +84,7 @@ function init() {
 
 	// 사원 삭제
 	$('#delEmpBtn').click(() => {
-		if(isEmpId()) $('#delEmpModal').modal('show');
+		if(isChecked()) $('#delEmpModal').modal('show');
 		else alert('삭제할 사원을 선택하세요.', false);
 	});
 	
