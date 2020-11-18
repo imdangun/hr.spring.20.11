@@ -1,6 +1,11 @@
 <%@ page language='java' contentType='text/html; charset=utf-8' pageEncoding='utf-8' %>
 <%@ include file='../include/lib.jsp' %>
+<script src='../include/lib.js'></script>
+
 <script>
+list = listEmployees
+inputs = [$('#empName'), $('#hireDate')];
+
 // 메세지를 출력한다.
 /*
 function alert(msg, result = true) {

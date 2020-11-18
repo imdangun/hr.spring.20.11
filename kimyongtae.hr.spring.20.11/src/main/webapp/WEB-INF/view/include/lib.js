@@ -3,11 +3,11 @@ function alert(msg, result = true) {
 		list();		
 		
 		for(input of inputs)
-			$(input).val('');
+			input.val('');
 		
 		$('#msg').removeClass('alert-danger').addClass('alert-success');
 	} else $('#msg').removeClass('alert-success').addClass('alert-danger');	
 	
 	$('#msg').text(msg);
-	$('#alert').show();
+	$('#alert').show();	
 }
