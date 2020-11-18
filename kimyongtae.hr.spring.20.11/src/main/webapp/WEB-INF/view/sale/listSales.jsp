@@ -106,7 +106,7 @@ $(init);
 				<div class='ml-4'>	
 					<button type='button' class='btn btn-sm btn-outline-info' id='fixSaleBtn'>수정</button>
 					<button type='button' class='btn btn-sm btn-outline-success' id='delSaleBtn'>삭제</button>
-					<a href='sale/addSale' class='btn btn-sm btn-secondary ml-3' id='addSaleBtn'>추가</a>					
+					<a href='sale/add' class='btn btn-sm btn-secondary ml-3' id='addSaleBtn'>추가</a>					
 				</div>					
 			</form>
 		</div>	

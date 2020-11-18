@@ -27,7 +27,7 @@ public class SaleController {
 		return saleService.getSales();
 	}
 	
-	@GetMapping("/addSale")
+	@GetMapping("/add")
 	public ModelAndView addSaleIn(ModelAndView mv) {
 		empIdList = saleService.getEmployeeIdsNoSale();
 		
@@ -37,7 +37,7 @@ public class SaleController {
 		return mv;
 	}
 	
-	@PostMapping("/addSale")
+	@PostMapping("/add")
 	public boolean addSale(int empId, int sales) {
 		boolean result = false;
 		
